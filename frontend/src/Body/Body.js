@@ -8,40 +8,38 @@ function Body(){
     );
 }
 
-let body = document.querySelector('.main-body');
-
 Body.modify = function(type){
     switch(type){
         case PageType.AUTH:
-            modifyToAuth();
+            Body.modifyToAuth();
             break;
         case PageType.DISCOUNTS:
-            modifyToDiscounts();
+            Body.modifyToDiscounts();
             break;
         case PageType.LIST:
-            modifyToList();
+            Body.modifyToList();
             break;
         case PageType.MINING:
-            modifyToMining();
+            Body.modifyToMining();
             break;
         default:
             return;
     }
 }
 
-modifyToAuth = function(){
-    
-}
-
-modifyToMining = function(){
+Body.modifyToAuth = function(){
 
 }
 
-modifyToDiscounts = function(){
+Body.modifyToMining = function(){
 
 }
 
-modifyToList = function(){
+Body.modifyToDiscounts = function(){
+
+}
+
+Body.modifyToList = function(){
 
 }
 

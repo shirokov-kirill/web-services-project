@@ -7,28 +7,28 @@ function Header(props){
     return(
         <header>
             <div className="main-menu">
-                <Button className="list-button" text="Каталог" onClick={listButtonOnClick}/>
-                <Button className="discounts-button" text="Акции" onClick={discountsButtonOnClick}/>
-                <Button className="mining-button" text="Заработать" onClick={miningButtonOnClick}/>
+                <Button className="list-button" text="Каталог" onClick={Header.listButtonOnClick}/>
+                <Button className="discounts-button" text="Акции" onClick={Header.discountsButtonOnClick}/>
+                <Button className="mining-button" text="Заработать" onClick={Header.miningButtonOnClick}/>
             </div>
-            <Button className="auth-button" text="Авторизация" onClick={authButtonOnClick}/>
+            <Button className="auth-button" text="Авторизация" onClick={Header.authButtonOnClick}/>
         </header>
     )
 }
 
-listButtonOnClick = function(){
+Header.listButtonOnClick = function(){
     Body.modify(PageType.LIST)
 }
 
-discountsButtonOnClick = function(){
+Header.discountsButtonOnClick = function(){
     Body.modify(PageType.DISCOUNTS)
 }
 
-miningButtonOnClick = function(){
+Header.miningButtonOnClick = function(){
     Body.modify(PageType.MINING)
 }
 
-authButtonOnClick = function(){
+Header.authButtonOnClick = function(){
     Body.modify(PageType.AUTH)
 }
 
