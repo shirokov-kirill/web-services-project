@@ -1,46 +1,40 @@
 import './Body.css'
-import PageType from '../Header/BodyCommunicating/PageTypes';
+import React from 'react';
+import PageType from '../Header/BodyCommunicating/PageType';
+import Child from './Child/Child'
 
-function Body(){
-    return(
-        <div className="main-body">
-        </div>
-    );
-}
 
-Body.modify = function(type){
-    switch(type){
-        case PageType.AUTH:
-            Body.modifyToAuth();
-            break;
-        case PageType.DISCOUNTS:
-            Body.modifyToDiscounts();
-            break;
-        case PageType.LIST:
-            Body.modifyToList();
-            break;
-        case PageType.MINING:
-            Body.modifyToMining();
-            break;
-        default:
-            return;
+class Body extends React.Component{
+
+    #connectionManager;
+
+    constructor(props){
+        super(props);
+        this.state = {renderingPage: props.pageType};
+        console.log(this.state);
+        console.log(this.state);
+        this.#connectionManager = props.connectionManager;
+        console.log(this.state);
+        this.handleAuthConfirmation = this.handleAuthConfirmation.bind(this);
     }
-}
 
-Body.modifyToAuth = function(){
+    componentDidUpdate(prevProps){
+        if (this.props.pageType !== prevProps.pageType) {
+         this.setState({renderingPage: this.props.pageType});
+       }
+     }
 
-}
+    handleAuthConfirmation(){
+        this.props.handleAuthConfirmation();
+    }
 
-Body.modifyToMining = function(){
-
-}
-
-Body.modifyToDiscounts = function(){
-
-}
-
-Body.modifyToList = function(){
-
+    render(){
+        return(
+            <div className="main-body">
+                <Child screen={this.state.renderingPage} serverConnector={this.#connectionManager} handleAuthConfirmation={this.handleAuthConfirmation}/>
+            </div>
+        );
+    }
 }
 
 export default Body;

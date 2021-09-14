@@ -1,35 +1,47 @@
 import './Header.css'
 import Button from './Buttons/Button'
-import Body from '../Body/Body.js'
-import PageType from './BodyCommunicating/PageTypes.js'
+import Body from '../Body/Body'
+import PageType from './BodyCommunicating/PageType.js'
+import React from 'react'
 
-function Header(props){
-    return(
-        <header>
-            <div className="main-menu">
-                <Button className="list-button" text="Каталог" onClick={Header.listButtonOnClick}/>
-                <Button className="discounts-button" text="Акции" onClick={Header.discountsButtonOnClick}/>
-                <Button className="mining-button" text="Заработать" onClick={Header.miningButtonOnClick}/>
-            </div>
-            <Button className="auth-button" text="Авторизация" onClick={Header.authButtonOnClick}/>
-        </header>
-    )
-}
+class Header extends React.Component{
 
-Header.listButtonOnClick = function(){
-    Body.modify(PageType.LIST)
-}
+    constructor(props){
+        super(props);
+        this.listButtonOnClick = this.listButtonOnClick.bind(this);
+        this.discountsButtonOnClick = this.discountsButtonOnClick.bind(this);
+        this.authButtonOnClick = this.authButtonOnClick.bind(this);
+        this.miningButtonOnClick = this.miningButtonOnClick.bind(this);
+    }
 
-Header.discountsButtonOnClick = function(){
-    Body.modify(PageType.DISCOUNTS)
-}
+    render(){
+        return(
+            <header>
+                <div className="main-menu">
+                    <Button className="list-button" text="Каталог" onClick={this.listButtonOnClick}/>
+                    <Button className="discounts-button" text="Акции" onClick={this.discountsButtonOnClick}/>
+                    <Button className="mining-button" text="Заработать" onClick={this.miningButtonOnClick}/>
+                </div>
+                <Button className="auth-button" text="Авторизация" onClick={this.authButtonOnClick}/>
+            </header>
+        )
+    }
 
-Header.miningButtonOnClick = function(){
-    Body.modify(PageType.MINING)
-}
-
-Header.authButtonOnClick = function(){
-    Body.modify(PageType.AUTH)
+    listButtonOnClick = function(){
+        this.props.handleButtonClick(PageType.LIST);
+    }
+    
+    discountsButtonOnClick = function(){
+        this.props.handleButtonClick(PageType.DISCOUNTS);
+    }
+    
+    miningButtonOnClick = function(){
+        this.props.handleButtonClick(PageType.MINING);
+    }
+    
+    authButtonOnClick = function(){
+        this.props.handleButtonClick(PageType.AUTH);
+    }
 }
 
 export default Header;
