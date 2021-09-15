@@ -13,10 +13,10 @@ class App extends React.Component{
     super();
     this.#connectionManager = new ConnectionManager();
     this.state = {pageType: PageType.LIST};
-    this.handleButtonClick = this.handleButtonClick.bind(this);
+    this.handleButtonClickOrAuth = this.handleButtonClickOrAuth.bind(this);
   }
 
-  handleButtonClick(type){
+  handleButtonClickOrAuth(type){
     if(this.#connectionManager.canAccess(type)){
       this.setState({pageType: type});
     } else {
@@ -27,8 +27,8 @@ class App extends React.Component{
   render(){
     return (
       <div className="App">
-        <Header handleButtonClick={this.handleButtonClick}/>
-        <Body connectionManager={this.#connectionManager} pageType={this.state.pageType}/>
+        <Header handleButtonClick={this.handleButtonClickOrAuth}/>
+        <Body connectionManager={this.#connectionManager} pageType={this.state.pageType} handleAuth={this.handleButtonClickOrAuth}/>
       </div>
     );
   }

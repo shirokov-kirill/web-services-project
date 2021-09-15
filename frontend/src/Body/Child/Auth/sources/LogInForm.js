@@ -1,46 +1,64 @@
+import React from 'react'
 import './LogInForm.css'
 
-function LogInForm(props){
-    return(
-        <div className="LogInForm">
-            <div>
-                <h2>
-                    Login
-                </h2>
-                <input className="enterField" name="login" onChange={LogInForm.onLoginChange}/>
-            </div>
-            <div>
-                <h2>
-                    Password
-                </h2>
-                <input className="enterField" type="password" name="password" onChange={LogInForm.onPasswordChange}/>
-            </div>
-            <button className="confirmButton" onClick={() => LogInForm.onConfirmClick(props)}>
-                Confirm.
-            </button>
-      </div>
-    );
-}
+class LogInForm extends React.Component{
 
-LogInForm.state = {
-    login: "",
-    password: ""
-}
+    constructor(props){
+        super(props)
+        this.state = {
+            login: "",
+            password: ""
+        }
+        this.onLoginChangeHandler = this.onLoginChangeHandler.bind(this);
+        this.onPasswordChangeHandler = this.onPasswordChangeHandler.bind(this);
+    }
 
-LogInForm.onLoginChange = function(event){
-    LogInForm.state.login = event.target.value
-}
+    render(){
+        return(
+            <div className="LogInForm">
+                <div>
+                    <h2>
+                        Login
+                    </h2>
+                    <input className="enterField loginField" name="login" onChange={() => this.onLoginChange(this.onLoginChangeHandler)}/>
+                </div>
+                <div>
+                    <h2>
+                        Password
+                    </h2>
+                    <input className="enterField passwordField" type="password" name="password" onChange={() => this.onPasswordChange(this.onPasswordChangeHandler)}/>
+                </div>
+                <button className="confirmButton" onClick={() => this.onConfirmClick(this.props)}>
+                    Confirm.
+                </button>
+          </div>
+        );
+    }
 
-LogInForm.onPasswordChange = function(event){
-    LogInForm.state.password = event.target.value;
-}
+    onLoginChange = (handler) => {
+        console.log(handler);
+        handler(document.querySelector('.loginField').value);
+    }
 
-LogInForm.onConfirmClick = function(props){
-    props.serverConnector.authorize(LogInForm.state.login, LogInForm.state.password, props.next);
-    LogInForm.setState({login: '', password: ''});
-    let updateFront = document.getElementsByClassName('enterField');
-    for (const element of updateFront) {
-        element.value = '';
+    onLoginChangeHandler = function(value){
+        this.setState({login: value});
+    }
+    
+    onPasswordChange = (handler) => {
+        handler(document.querySelector('.passwordField').value)
+    }
+
+    onPasswordChangeHandler = function(value){
+        this.setState({password: value});
+    }
+    
+    onConfirmClick = (props) => {
+        props.serverConnector.authorize(this.state.login, this.state.password, props.next);
+        this.setState({login: '', password: ''});
+        let updateFront = document.getElementsByClassName('enterField');
+        for (const element of updateFront) {
+            element.value = '';
+        }
     }
 }
 

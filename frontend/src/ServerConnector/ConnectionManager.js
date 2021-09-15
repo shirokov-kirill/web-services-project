@@ -3,6 +3,7 @@ import MiningConnector from "./Mining/MiningConnector";
 import DiscountsConnector from "./Discounts/DiscountsConnector"
 import ListConnector from "./List/ListConnector";
 import PageType from "../Header/BodyCommunicating/PageType";
+import User from './User/User'
 
 class ConnectionManager{
 
@@ -10,9 +11,11 @@ class ConnectionManager{
     #miningConnector
     #discountsConnector
     #listConnector
+    #user
 
 
     constructor(){
+        this.#user = new User();
         this.#authConnector = new AuthConnector();
         this.#miningConnector = new MiningConnector();
         this.#discountsConnector = new DiscountsConnector();
@@ -20,11 +23,11 @@ class ConnectionManager{
     }
 
     authorize(login, password, next){
-        this.#authConnector.authorize(login, password, next);
+        this.#authConnector.authorize(login, password, next, this.#user);
     }
 
     isAuth(){
-        return this.#authConnector.isAuthorized();
+        return this.#user.isAuthorized();
     }
 
     canAccess(type){

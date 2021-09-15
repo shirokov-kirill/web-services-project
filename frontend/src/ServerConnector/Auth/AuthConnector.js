@@ -1,4 +1,5 @@
 import PageType from "../../Header/BodyCommunicating/PageType";
+import User from "../User/User";
 
 class AuthConnector{
 
@@ -8,8 +9,8 @@ class AuthConnector{
         this.#isAuthorized = false;
     }
 
-    authorize(login, password, next){
-        fetch("http://localhost:3001/auth", {
+    authorize(login, password, next, user){
+        fetch("http://localhost:8000/login", {
             method: "POST",
             mode: "cors",
             headers: {
@@ -20,6 +21,7 @@ class AuthConnector{
         .then(ans => ans.json()).then(answer => {
             if(answer.status === 'OK'){
                 this.#isAuthorized = true;
+                user.updateUserLoggedIn(answer.id, answer.name, answer.token, answer.age, answer.cash);
             }
             if(this.#isAuthorized){
                 next(PageType.LIST);
