@@ -1,0 +1,16 @@
+button{
+    padding-right: 7px;
+    color: white;
+    background-color:darkslategray;
+    border:floralwhite solid 2px;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin: 0 3px;
+    font-size: 19px;
+}
+
+.auth-button{
+    margin-left: auto;
+}
