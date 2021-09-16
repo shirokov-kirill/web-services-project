@@ -164,3 +164,7 @@
 
 # Cython debug symbols
 /backend/cython_debug/
+
+#pytest
+/backend/.pytest_cashe/
+backend/tests/__pycache__/

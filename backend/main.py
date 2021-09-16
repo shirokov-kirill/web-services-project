@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Query
 from schemas import LoginRequest
 from fastapi.middleware.cors import CORSMiddleware
+from app import *
 
 app = FastAPI()
 
@@ -17,54 +18,16 @@ app.add_middleware(
 )
 
 
-@app.get("/")
-def home():
-    return {
-        "key": "Hello"
-    }
-
-
-def searchUserByLogin(login, password = Query(default="", deprecated=True)):
-    return {
-        'id': 1,
-        'password': password,
-        'token': 'dfgkdflgkdflgkflgdfk',
-        'name': 'John',
-        'age': 23,
-        'cash': 145
-    }
-
-
-def validate(id, token):
-    return True #until DB
+@app.get("/{number}")
+def home(number: int):
+    return func_home(number)
 
 
 @app.post('/mining')
-def addAmount(amount: int, id: int, token: str):
-    if(validate(id, token)):
-        #add amount, until DB
-        return {
-            'status': 'OK'
-        }
-    else:
-        return {
-            'status': 'Error Validation'
-        }
+def add_amount(amount: int, id: int, token: str):
+    return func_add_amount(amount, id, token)
 
 
 @app.post('/login')
-def get_item(req: LoginRequest):
-    user = searchUserByLogin(req.login, req.password)
-    if user['password'] == req.password:
-        return {
-            'status': 'OK',
-            'id': user['id'],
-            'name': user['name'],
-            'token': user['token'],
-            'age': user['age'],
-            'cash': user['cash']
-        }
-    else:
-        return {
-            'status': 'Login Error'
-        }
+def log_in(req: LoginRequest):
+    return func_log_in(req.login, req.password)
