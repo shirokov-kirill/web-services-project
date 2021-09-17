@@ -40,6 +40,8 @@ class ConnectionManager{
                 return true;
             case PageType.MINING:
                 return this.isAuth();
+            case PageType.PROFILE:
+                return this.isAuth();
         }
     }
 }

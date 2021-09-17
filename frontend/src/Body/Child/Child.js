@@ -5,6 +5,7 @@ import Auth from './Auth/Auth'
 import List from './List/List'
 import Mining from './Mining/Mining'
 import Discounts from './Discounts/Discounts'
+import Profile from './Profile/Profile';
 
 class Child extends React.Component{
     constructor(props){
@@ -28,6 +29,10 @@ class Child extends React.Component{
             case PageType.DISCOUNTS:
                 return(
                     <Discounts serverConnector={this.props.serverConnector}/>
+                );
+            case PageType.LIST:
+                return(
+                    <Profile serverConnector={this.props.serverConnector}/>
                 );
             default:
                 return(

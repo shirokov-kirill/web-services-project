@@ -12,6 +12,7 @@ class Header extends React.Component{
         this.discountsButtonOnClick = this.discountsButtonOnClick.bind(this);
         this.authButtonOnClick = this.authButtonOnClick.bind(this);
         this.miningButtonOnClick = this.miningButtonOnClick.bind(this);
+        this.profileButtonOnClick = this.profileButtonOnClick.bind(this);
     }
 
     render(){
@@ -21,6 +22,7 @@ class Header extends React.Component{
                     <Button className="list-button" text="Каталог" onClick={this.listButtonOnClick}/>
                     <Button className="discounts-button" text="Акции" onClick={this.discountsButtonOnClick}/>
                     <Button className="mining-button" text="Заработать" onClick={this.miningButtonOnClick}/>
+                    <Button className="profile-button" text="Профиль" onClick={this.profileButtonOnClick}/>
                 </div>
                 <Button className="auth-button" text="Авторизация" onClick={this.authButtonOnClick}/>
             </header>
@@ -41,6 +43,10 @@ class Header extends React.Component{
     
     authButtonOnClick = function(){
         this.props.handleButtonClick(PageType.AUTH);
+    }
+
+    profileButtonOnClick = function(){
+        this.props.handleButtonClick(PageType.PROFILE);
     }
 }
 
