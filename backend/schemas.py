@@ -1,17 +1,20 @@
 from pydantic import BaseModel
-from datetime import date
-from typing import List
+from graphene import ObjectType, String, List, Int
 
 
-class Item(BaseModel):
-    name: str
-    value: float
-    description: str
-#    image:
+class Item(ObjectType):
+    item_id = Int(required=True)
+    name = String(required=True)
+    value = Int(required=True)
+    description = String(required=True)
+    recommendations = List(Int)
 
 
-class ItemList(BaseModel):
-    list: List[Item]
+class ItemsSet(ObjectType):
+    set_id = Int(required=True)
+    name = String(required=True)
+    size = Int(required=True)
+    list = List(Item)
 
 
 class LoginRequest(BaseModel):

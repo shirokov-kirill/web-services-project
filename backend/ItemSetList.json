@@ -1,0 +1,107 @@
+[
+  {
+    "set_id": 1,
+    "name": "Star Wars",
+    "size": 5,
+    "list": [
+      {
+        "item_id": 1,
+        "name": "Death Star",
+        "value": 13599,
+        "description": "Big warbase of Dart Wader",
+        "recommendations": []
+      },
+      {
+        "item_id": 2,
+        "name": "Troops carrier",
+        "value": 6999,
+        "description": "Big warbase of Dart Wader",
+        "recommendations": []
+      },
+      {
+        "item_id": 3,
+        "name": "Jungle base",
+        "value": 11599,
+        "description": "Big warbase of Dart Wader",
+        "recommendations": []
+      }
+    ]
+  },
+  {
+    "set_id": 2,
+    "name": "City",
+    "size": 5,
+    "list": [
+      {
+        "item_id": 4,
+        "name": "Police",
+        "value": 13599,
+        "description": "Central Police station",
+        "recommendations": []
+      },
+      {
+        "item_id": 5,
+        "name": "Troops carrier",
+        "value": 12499,
+        "description": "Central Fire Base",
+        "recommendations": []
+      },
+      {
+        "item_id": 6,
+        "name": "Bank",
+        "value": 15000,
+        "description": "Hold your money in",
+        "recommendations": []
+      }
+    ]
+  },
+  {
+    "set_id": 3,
+    "name": "Technic",
+    "size": 5,
+    "list": [
+      {
+        "item_id": 7,
+        "name": "Ship",
+        "value": 12000,
+        "description": "Cruise ship",
+        "recommendations": []
+      },
+      {
+        "item_id": 8,
+        "name": "Tank",
+        "value": 14999,
+        "description": "Big green tank",
+        "recommendations": []
+      },
+      {
+        "item_id": 9,
+        "name": "Jeep",
+        "value": 8500,
+        "description": "Big black jeep",
+        "recommendations": []
+      }
+    ]
+  },
+  {
+    "set_id": 4,
+    "name": "Bionicle",
+    "size": 5,
+    "list": [
+      {
+        "item_id": 10,
+        "name": "Red Bionicle",
+        "value": 1500,
+        "description": "Fire Bionicle with a blast gun",
+        "recommendations": []
+      },
+      {
+        "item_id": 11,
+        "name": "Yellow Bionicle",
+        "value": 1500,
+        "description": "Protection Bionicle with a large shield",
+        "recommendations": []
+      }
+    ]
+  }
+]
