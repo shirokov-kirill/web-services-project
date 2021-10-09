@@ -5,6 +5,7 @@ from starlette.graphql import GraphQLApp
 from schemas import LoginRequest, ItemsSet
 from fastapi.middleware.cors import CORSMiddleware
 from app import *
+from DatabaseConnector import DatabaseConnector
 import json
 
 app = FastAPI()
@@ -20,6 +21,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+connector = DatabaseConnector()
 
 
 class ItemSetList(ObjectType):
@@ -40,6 +44,11 @@ app.add_route("/products", GraphQLApp(
 @app.get("/{number}")
 def home(number: int):
     return func_home(number)
+
+
+@app.post("/start-transaction")
+def add_transaction(card: str, summa: int):
+    return connector.add_new_transaction(card, summa)
 
 
 @app.post('/mining')
