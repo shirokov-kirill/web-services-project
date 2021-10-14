@@ -48,7 +48,7 @@ def home(number: int):
 
 @app.post("/start-transaction")
 def add_transaction(card: str, summa: int):
-    return connector.add_new_transaction(card, summa)
+    return connector.add_new_transaction(card, summa)[0]
 
 
 @app.post('/mining')
